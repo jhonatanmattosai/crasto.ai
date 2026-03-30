@@ -1,0 +1,14 @@
+# Dependências e caches
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+*.log
+
+# Pasta de trabalho legacy (conteúdo migrado para dev/ e static/)
+Assets/
+
+# IDEs
+.vscode/
+.idea/

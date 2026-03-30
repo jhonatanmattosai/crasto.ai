@@ -1,0 +1,624 @@
+import os
+
+outfile = r"c:\Users\jm881\OneDrive\CRASTO.AI\dev\design\design_system.html"
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Core Design System</title>
+    
+    <!-- References to Original Scripts & Styles -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Scripts from enterprise-ai and futuristic-saas -->
+    <script src="enterprise-ai-58.aura.build/assets/iconify-icon_e19829e7f0e8.js"></script>
+    <script src="enterprise-ai-58.aura.build/assets/unicornStudio_f86b9c4abf24.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'monospace']
+                    },
+                    colors: {
+                        space: { 900: '#02040A', 800: '#060913', 700: '#0B1120' },
+                        brand: { 500: '#6366f1', 400: '#818cf8', 300: '#a5b4fc' },
+                        glow: { cyan: '#22d3ee', emerald: '#10b981', pink: '#ec4899' }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 15s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite'
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+                        shimmer: { '0%': { transform: 'translateX(-150%)' }, '100%': { transform: 'translateX(150%)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000000; color: #ffffff; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+
+        /* Animated grid background */
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glass / Text Effects */
+        .text-glassy {
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.4) 100%);
+        }
+        .glass-panel {
+            background: rgba(11, 17, 32, 0.4); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ambient-glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; pointer-events: none; mix-blend-mode: screen; }
+
+        /* Intro Sequence */
+        @keyframes animationIn {
+            0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+        }
+        .animate-in { opacity: 0; animation: animationIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+
+        .btn-glow { position: relative; z-index: 1; }
+        .btn-glow::before {
+            content: ''; position: absolute; inset: -1px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+            border-radius: inherit; z-index: -1; opacity: 0; transition: opacity 0.4s ease;
+        }
+        .btn-glow:hover::before { opacity: 1; filter: blur(12px); }
+
+        .tag-spec { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.5rem 0; font-family: monospace; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+        .tag-spec span:last-child { color: rgba(255,255,255,0.8); }
+
+        /* Showcase 3D Panels extracted from futuristic-saas */
+        .showcase-container { perspective: 1500px; transform-style: preserve-3d; }
+        .showcase-wrapper { transform: rotateX(55deg) rotateZ(-35deg); transform-style: preserve-3d; transition: transform 0.5s ease-out; }
+        .showcase-wrapper:hover { transform: rotateX(50deg) rotateZ(-30deg) translateZ(30px); }
+        .showcase-panel { position: absolute; inset: 0; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); transition: all 0.5s ease; background: rgba(11, 17, 32, 0.6); }
+        .panel-1 { transform: translateZ(0px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .panel-2 { transform: translateZ(60px); border-color: rgba(255, 255, 255, 0.2); }
+        .panel-3 { transform: translateZ(120px); border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 0 40px rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+
+<body class="font-sans min-h-screen relative selection:bg-white/20 selection:text-white bg-space-900">
+    
+    <!-- Background Grid -->
+    <div class="fixed inset-0 bg-grid z-0 opacity-40 pointer-events-none"></div>
+
+    <!-- Decorative Animated Glows -->
+    <div class="fixed top-[-20%] left-[-10%] w-[60%] h-[80%] bg-indigo-900/20 ambient-glow rounded-full animate-pulse-slow"></div>
+    <div class="fixed bottom-[-20%] right-[-10%] w-[50%] h-[60%] bg-cyan-900/10 ambient-glow rounded-full animate-float"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 z-[100] w-full px-8 py-5 border-b border-white/5 bg-space-900/60 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-white font-manrope font-bold text-xl tracking-[0.2em] relative">
+                <span class="text-glassy">AURA_OS</span>
+                <div class="absolute -inset-4 bg-white/5 blur-xl rounded-full z-[-1]"></div>
+            </div>
+            <div class="hidden md:flex gap-8 relative z-10">
+                <a href="#hero" class="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors font-medium">Hero</a>
+                <a href="#typography" class="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors font-medium">Typography</a>
+                <a href="#colors" class="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors font-medium">Colors</a>
+                <a href="#components" class="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors font-medium">Components</a>
+                <a href="#icons" class="text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors font-medium">Icons & Motion</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SHOWCASE -->
+    <header id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        
+        <!-- Unicorn 3D component (if init works) -->
+        <div class="absolute inset-0 z-0 opacity-30 mix-blend-screen" data-us-project="U7tLRvdF7ikcfxcCHs65"></div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-8 flex flex-col lg:flex-row items-center justify-between gap-16">
+            
+            <!-- Left Text Content -->
+            <div class="flex-1 flex flex-col items-start text-left">
+                <div class="animate-in inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-lg mb-8 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    <span class="text-[10px] text-white/80 uppercase tracking-[0.3em] font-bold">Unifed Design System • v3.0</span>
+                </div>
+                
+                <h1 class="animate-in delay-1 md:text-[90px] text-6xl font-manrope font-light leading-[0.95] tracking-tighter mb-8 text-glassy drop-shadow-2xl">
+                    Hyper-Dimensional<br>Architecture
+                </h1>
+                
+                <p class="animate-in delay-2 text-lg md:text-xl text-slate-300 max-w-xl font-light mb-12">
+                    A pristine composition of profound components, animations, and structural precision serving as the foundation for the entire AURA ecosystem.
+                </p>
+
+                <div class="animate-in delay-3">
+                    <button class="group relative px-10 py-5 rounded-full bg-white/5 backdrop-blur-xl border border-white/20 overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 btn-glow shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
+                        <span class="relative z-10 text-sm font-bold tracking-[0.2em] text-white uppercase drop-shadow">Explore Capabilities</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right 3D Showcase (From futuristic-saas) -->
+            <div class="flex-1 relative w-full h-[500px] animate-in delay-3 showcase-container flex items-center justify-center">
+                 <div class="showcase-wrapper w-[300px] h-[400px] absolute">
+                      <div class="showcase-panel panel-1 flex flex-col items-center justify-center p-6 text-center">
+                           <iconify-icon icon="lucide:layers" class="text-4xl text-indigo-500/50 mb-4"></iconify-icon>
+                           <div class="w-full h-2 bg-white/5 rounded mt-4"></div>
+                           <div class="w-2/3 h-2 bg-white/5 rounded mt-2"></div>
+                      </div>
+                      <div class="showcase-panel panel-2 flex flex-col items-center justify-center p-6 bg-space-800/80">
+                           <iconify-icon icon="lucide:cpu" class="text-4xl text-cyan-400/50 mb-4 animate-pulse-slow"></iconify-icon>
+                           <div class="w-full h-2 bg-cyan-400/10 rounded mt-4"></div>
+                      </div>
+                      <div class="showcase-panel panel-3 flex flex-col items-center justify-center p-6 bg-gradient-to-br from-indigo-500/20 to-transparent border-indigo-400/30">
+                           <h3 class="text-xl font-manrope font-bold text-white mb-2">Design Core</h3>
+                           <p class="text-xs text-white/50">Hover to expand volumetric depth.</p>
+                      </div>
+                 </div>
+            </div>
+
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <iconify-icon icon="lucide:arrow-down" width="24" class="text-white"></iconify-icon>
+        </div>
+    </header>
+
+    <!-- 2. TYPOGRAPHY -->
+    <section id="typography" class="py-32 px-8 max-w-7xl mx-auto relative z-10 border-t border-white/5">
+        <div class="flex items-center gap-6 mb-16">
+            <span class="text-xs text-indigo-400 tracking-[0.4em] font-mono">01</span>
+            <div class="h-px w-16 bg-gradient-to-r from-indigo-500/60 to-transparent"></div>
+            <span class="text-xs uppercase font-semibold text-white/80 tracking-[0.3em]">Typography Toolkit</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Strategy Panel -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="glass-panel p-8 rounded-3xl h-full relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-3xl group-hover:bg-indigo-500/20 transition-all"></div>
+                    <h3 class="text-2xl font-manrope text-white mb-6">Font Strategy</h3>
+                    <p class="text-sm text-white/60 mb-8 leading-relaxed">
+                        Loaded via multiple strategies: Primary structural faces are pulled securely from CDN configurations, while critical app interfaces load system stack or local fallbacks to ensure Zero Cumulative Layout Shift (CLS).
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white/5 border border-white/10 rounded-xl space-y-2">
+                            <span class="text-[10px] text-indigo-300 font-mono tracking-widest uppercase">Display / Primary</span>
+                            <div class="text-xl font-display text-white">Space Grotesk &amp; Manrope</div>
+                            <div class="text-xs text-white/40">Weights: 300, 400, 500, 600, 700</div>
+                            <div class="text-xs text-white/40">Strategy: Header tags (H1-H3)</div>
+                        </div>
+                        <div class="p-4 bg-white/5 border border-white/10 rounded-xl space-y-2">
+                            <span class="text-[10px] text-cyan-300 font-mono tracking-widest uppercase">Body / UI Elements</span>
+                            <div class="text-xl font-sans text-white">Inter (Fallback: Sans-serif)</div>
+                            <div class="text-xs text-white/40">Weights: 300, 400, 600</div>
+                            <div class="text-xs text-white/40">Strategy: body-lg, body, body-sm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Scale Panel -->
+            <div class="lg:col-span-8 space-y-6">
+                <div class="glass-panel p-8 rounded-3xl h-full flex flex-col gap-6">
+                    <h3 class="text-xl font-manrope text-white mb-4">Complete Type Scale</h3>
+                    
+                    <!-- H1 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start border-b border-white/10 pb-6 hover:bg-white/[0.02] p-4 rounded-xl transition-colors">
+                        <div><h1 class="text-6xl md:text-7xl font-display font-light text-glassy tracking-tighter">Heading 1</h1></div>
+                        <div class="w-full">
+                            <div class="tag-spec"><span>Font-Family</span><span>Space Grotesk</span></div>
+                            <div class="tag-spec"><span>Font-Weight</span><span>300 (Light)</span></div>
+                            <div class="tag-spec"><span>Font-Size</span><span>72px (4.5rem)</span></div>
+                            <div class="tag-spec"><span>Line-Height</span><span>0.95</span></div>
+                            <div class="tag-spec"><span>Letter-Spacing</span><span>-0.05em</span></div>
+                            <div class="tag-spec"><span>Text-Transform</span><span>None</span></div>
+                        </div>
+                    </div>
+
+                    <!-- H2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start border-b border-white/10 pb-6 hover:bg-white/[0.02] p-4 rounded-xl transition-colors">
+                        <div><h2 class="text-5xl font-manrope font-semibold text-white tracking-tight">Heading 2</h2></div>
+                        <div class="w-full">
+                            <div class="tag-spec"><span>Font-Family</span><span>Manrope</span></div>
+                            <div class="tag-spec"><span>Font-Weight</span><span>600 (Semibold)</span></div>
+                            <div class="tag-spec"><span>Font-Size</span><span>48px (3rem)</span></div>
+                            <div class="tag-spec"><span>Line-Height</span><span>1.1</span></div>
+                            <div class="tag-spec"><span>Letter-Spacing</span><span>-0.02em</span></div>
+                        </div>
+                    </div>
+
+                    <!-- H3 / H4 combined view -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-white/10 pb-6">
+                        <div class="hover:bg-white/[0.02] p-4 rounded-xl" >
+                            <h3 class="text-3xl font-manrope font-medium text-white mb-4">Heading 3</h3>
+                            <div class="tag-spec"><span>Size/Height</span><span>30px / 1.2</span></div>
+                            <div class="tag-spec"><span>Weight</span><span>500 (Medium)</span></div>
+                        </div>
+                        <div class="hover:bg-white/[0.02] p-4 rounded-xl">
+                            <h4 class="text-xl font-sans font-bold text-white mb-4">Heading 4</h4>
+                            <div class="tag-spec"><span>Size/Height</span><span>20px / 1.4</span></div>
+                            <div class="tag-spec"><span>Weight</span><span>700 (Bold)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- H5 / H6 / Labels -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass-panel p-4 rounded-xl">
+                            <h5 class="text-sm font-sans font-bold uppercase tracking-widest text-indigo-300 mb-4">Heading 5</h5>
+                            <div class="tag-spec"><span>Size</span><span>14px</span></div>
+                            <div class="tag-spec"><span>Spacing</span><span>0.1em</span></div>
+                            <div class="tag-spec"><span>Role</span><span>Section Labels</span></div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl">
+                            <p class="text-base font-sans text-white/60 mb-4">Body (Normal)</p>
+                            <div class="tag-spec"><span>Size</span><span>16px</span></div>
+                            <div class="tag-spec"><span>Height</span><span>1.6</span></div>
+                            <div class="tag-spec"><span>Role</span><span>Paragraphs</span></div>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl">
+                            <p class="text-sm font-sans text-white/40 mb-4">Body-SM / Captions</p>
+                            <div class="tag-spec"><span>Size</span><span>12px - 14px</span></div>
+                            <div class="tag-spec"><span>Height</span><span>1.5</span></div>
+                            <div class="tag-spec"><span>Role</span><span>Helper text / Tags</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COLOR SYSTEM -->
+    <section id="colors" class="py-32 px-8 max-w-7xl mx-auto relative z-10 border-t border-white/5">
+        <div class="flex items-center gap-6 mb-16">
+            <span class="text-xs text-indigo-400 tracking-[0.4em] font-mono">02</span>
+            <div class="h-px w-16 bg-gradient-to-r from-indigo-500/60 to-transparent"></div>
+            <span class="text-xs uppercase font-semibold text-white/80 tracking-[0.3em]">Algorithmic Color Matrix</span>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Neutrals / Backgrounds -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-manrope text-white">Neutrals & Backdrops (Space Scale)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Swatch 1 -->
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col gap-6 relative group overflow-hidden">
+                        <div class="w-full h-24 bg-[#02040A] rounded-xl border border-white/10 shadow-[inset_0_5px_15px_rgba(0,0,0,1)] flex items-center justify-center">
+                            <span class="text-[10px] text-white/30 font-mono">bg-space-900</span>
+                        </div>
+                        <div class="space-y-2 w-full">
+                            <h4 class="font-bold text-white text-lg">Space 900</h4>
+                            <div class="tag-spec"><span>HEX</span><span>#02040A</span></div>
+                            <div class="tag-spec"><span>RGB</span><span>2, 4, 10</span></div>
+                            <div class="tag-spec"><span>Role</span><span class="text-right">Primary Canvas / Darkest Surface</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Swatch 2 -->
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col gap-6 relative group overflow-hidden">
+                        <div class="w-full h-24 bg-[#060913] rounded-xl border border-white/10 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                            <span class="text-[10px] text-white/30 font-mono">bg-space-800</span>
+                        </div>
+                        <div class="space-y-2 w-full">
+                            <h4 class="font-bold text-white text-lg">Space 800</h4>
+                            <div class="tag-spec"><span>HEX</span><span>#060913</span></div>
+                            <div class="tag-spec"><span>Role</span><span class="text-right">Secondary Panel / Modals</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Swatch 3 -->
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col gap-6 relative group overflow-hidden">
+                        <div class="w-full h-24 bg-[#0B1120] rounded-xl border border-white/10 flex items-center justify-center">
+                            <span class="text-[10px] text-white/30 font-mono">bg-space-700</span>
+                        </div>
+                        <div class="space-y-2 w-full">
+                            <h4 class="font-bold text-white text-lg">Space 700</h4>
+                            <div class="tag-spec"><span>HEX</span><span>#0B1120</span></div>
+                            <div class="tag-spec"><span>Role</span><span class="text-right">Cards / Hover states</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accents & Intents -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-manrope text-white">Semantic Roles & Gradients</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Accent 1 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-all z-0"></div>
+                        <div class="relative z-10 space-y-6">
+                            <div class="w-16 h-16 rounded-full bg-indigo-500 shadow-[0_0_30px_rgba(99,102,241,0.6)] flex items-center justify-center border-2 border-white/20">
+                                <iconify-icon icon="lucide:zap" class="text-white text-xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xl mb-2">Primary Accent (Indigo)</h4>
+                                <div class="tag-spec"><span>Gradient Origin</span><span>from-indigo-500</span></div>
+                                <div class="tag-spec"><span>Base Hex</span><span>#6366f1</span></div>
+                                <div class="tag-spec"><span>Contrast</span><span>AA (against #02040A)</span></div>
+                                <div class="mt-4 text-[10px] text-white/50 leading-relaxed font-mono">Contextual usage: Primary CTAs, active active borders, hover highlights.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accent 2 -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-cyan-500/10 group-hover:bg-cyan-500/20 transition-all z-0"></div>
+                        <div class="relative z-10 space-y-6">
+                            <div class="w-16 h-16 rounded-full bg-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.6)] flex items-center justify-center border-2 border-white/20">
+                                <iconify-icon icon="lucide:check-circle" class="text-white text-xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xl mb-2">Feedback / Success (Cyan)</h4>
+                                <div class="tag-spec"><span>Base Hex</span><span>#22d3ee</span></div>
+                                <div class="tag-spec"><span>Opacity Variant</span><span>cyan-400/20 (Backgrounds)</span></div>
+                                <div class="mt-4 text-[10px] text-white/50 leading-relaxed font-mono">Contextual usage: Success statuses, positive confirmations, secondary glows.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ambient Glasses -->
+                    <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-all z-0 backdrop-blur-3xl"></div>
+                        <div class="relative z-10 space-y-6">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-white/30 to-white/5 shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center justify-center border border-white/30">
+                                <iconify-icon icon="lucide:layers" class="text-white text-xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-xl mb-2">Glass Overlays (White)</h4>
+                                <div class="tag-spec"><span>Gradient End</span><span>to-white/5</span></div>
+                                <div class="tag-spec"><span>Backdrop-Filter</span><span>blur(16px - 24px)</span></div>
+                                <div class="mt-4 text-[10px] text-white/50 leading-relaxed font-mono">Contextual usage: Panels, Navbars, inactive buttons, subtle borders (border-white/10).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. UI COMPONENTS -->
+    <section id="components" class="py-32 px-8 max-w-7xl mx-auto relative z-10 border-t border-white/5">
+        <div class="flex items-center gap-6 mb-16">
+            <span class="text-xs text-indigo-400 tracking-[0.4em] font-mono">03</span>
+            <div class="h-px w-16 bg-gradient-to-r from-indigo-500/60 to-transparent"></div>
+            <span class="text-xs uppercase font-semibold text-white/80 tracking-[0.3em]">Living Components Definition</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Forms & Actions Column -->
+            <div class="space-y-12">
+                
+                <!-- Buttons Card -->
+                <div class="glass-panel p-8 rounded-3xl group">
+                    <h3 class="text-white font-manrope text-2xl mb-2">Button Architecture</h3>
+                    <p class="text-white/40 text-sm mb-8">Hover to test the internal drop-shadows and CSS gradient blurs.</p>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-white/30 block mb-4">Primary Variant</span>
+                            <button class="relative px-8 py-3 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] min-w-[160px]">
+                                Submit Form
+                            </button>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-white/30 block mb-4">Glass / Ghost Variant</span>
+                            <button class="relative px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm transition-all btn-glow shadow-sm min-w-[160px]">
+                                Outline Action
+                            </button>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-white/30 block mb-4">Icon Variant</span>
+                            <button class="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white transition-colors shadow-lg shadow-black/50">
+                                <iconify-icon icon="lucide:chevron-right" class="text-xl"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs & Badges -->
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-cyan-500/10 blur-[80px]"></div>
+                    <h3 class="text-white font-manrope text-2xl mb-8 relative z-10">Inputs & Tags</h3>
+                    
+                    <div class="space-y-8 relative z-10">
+                        <div class="relative group/input">
+                            <label class="text-xs font-sans text-white/60 mb-2 block">Username / ID</label>
+                            <div class="absolute inset-x-0 bottom-[-10px] bg-white/10 blur-xl h-10 opacity-0 group-focus-within/input:opacity-100 transition-opacity"></div>
+                            <div class="relative">
+                                <iconify-icon icon="lucide:user" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></iconify-icon>
+                                <input type="text" class="w-full bg-space-800 border border-white/10 rounded-xl pl-12 pr-5 py-4 text-white text-sm focus:outline-none focus:border-white/30 focus:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all" placeholder="Enter node ID..."/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-sans text-white/60 mb-4 block">Status Badges (Tooltips & Inline)</label>
+                            <div class="flex flex-wrap gap-4">
+                                <!-- Online Badge -->
+                                <span class="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online
+                                </span>
+                                <!-- Alert Badge -->
+                                <span class="px-3 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-300 text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
+                                    <iconify-icon icon="lucide:alert-circle"></iconify-icon> Offline
+                                </span>
+                                <!-- Ghost Tooltip -->
+                                <span class="px-3 py-1.5 rounded-lg border border-white/10 bg-[#0B1120] text-white/60 text-xs shadow-lg shadow-black group cursor-pointer hover:text-white transition-colors">
+                                    Hover Tooltip
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modals & Structural Elements -->
+            <div class="space-y-12">
+                <!-- Massive Card Spec -->
+                <div class="glass-panel p-2 rounded-[2.5rem] bg-gradient-to-b from-space-800 to-space-900 border border-white/10 shadow-2xl relative group/card">
+                    <!-- Internal Card Window mimicking enterprise-ai main window -->
+                    <div class="bg-space-700 rounded-[2rem] p-8 border border-white/5 relative overflow-hidden h-[350px]">
+                        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px] opacity-70"></div>
+                        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent"></div>
+                        
+                        <div class="relative z-10 w-full h-full flex flex-col justify-between">
+                            <div class="flex justify-between items-center">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 backdrop-blur-md">
+                                    <iconify-icon icon="lucide:server" class="text-white text-xl"></iconify-icon>
+                                </div>
+                                <div class="flex gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                                    <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-2xl font-manrope text-white mb-2 group-hover/card:text-indigo-300 transition-colors">Structural Panel</h4>
+                                <p class="text-sm text-white/50 max-w-sm">Complex sections utilize embedded card elements with inline nested borders and deep inner shadows to create spatial hierarchy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals Notification Component -->
+                <div class="relative w-full h-[250px] flex items-center justify-center">
+                    <div class="absolute inset-0 border border-dashed border-white/10 rounded-3xl flex items-center justify-center p-6">
+                        <!-- Actual Modal -->
+                        <div class="bg-space-800/90 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] w-full max-w-md flex flex-col gap-4 relative animate-float">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-t-2xl"></div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex justify-center items-center flex-shrink-0 text-cyan-400">
+                                    <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="text-white font-bold text-sm">Deployment Success</h5>
+                                    <p class="text-xs text-white/50 mt-1 mb-4 leading-relaxed">Your application nodes have been synchronized perfectly to the central architecture ring.</p>
+                                    
+                                    <div class="flex gap-3">
+                                        <button class="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">View Logs</button>
+                                        <button class="text-xs font-bold text-white/40 hover:text-white transition-colors">Dismiss</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ICONS & 6. ANIMATIONS DEMO -->
+    <section id="icons" class="py-32 px-8 max-w-7xl mx-auto relative z-10 border-t border-white/5 mb-20">
+        <div class="flex items-center gap-6 mb-16">
+            <span class="text-xs text-indigo-400 tracking-[0.4em] font-mono">04</span>
+            <div class="h-px w-16 bg-gradient-to-r from-indigo-500/60 to-transparent"></div>
+            <span class="text-xs uppercase font-semibold text-white/80 tracking-[0.3em]">Iconography & Keyframes</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Icons Library -->
+            <div class="glass-panel rounded-3xl p-10">
+                <h3 class="text-xl font-manrope text-white mb-8">System Icons (Iconify / Lucide)</h3>
+                <div class="grid grid-cols-4 sm:grid-cols-6 gap-x-4 gap-y-8">
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:layout-dashboard" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">dashboard</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:command" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">command</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:cpu" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">cpu</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:network" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">network</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:zap" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">zap</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:settings" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">settings</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:globe" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">globe</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:layers" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">layers</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:users" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">users</span></div>
+                    <div class="flex flex-col items-center gap-3 group cursor-pointer"><iconify-icon icon="lucide:database" class="text-3xl text-white/40 group-hover:text-white group-hover:-translate-y-1 transition-all"></iconify-icon><span class="text-[9px] text-white/30 font-mono">database</span></div>
+                </div>
+            </div>
+
+            <!-- Animation Matrix -->
+            <div class="glass-panel rounded-3xl p-10 flex flex-col justify-between">
+                <h3 class="text-xl font-manrope text-white mb-2">Motion Matrix</h3>
+                <p class="text-[12px] text-white/40 mb-8 font-mono">Core @keyframes utilized globally</p>
+
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                        <div class="space-y-1">
+                            <span class="text-sm font-bold text-white">Shimmer Sweep</span>
+                            <div class="text-[10px] text-white/50 font-mono">linear infinite 2.5s</div>
+                        </div>
+                        <div class="w-32 h-8 rounded-lg bg-space-800 border border-white/10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                        <div class="space-y-1">
+                            <span class="text-sm font-bold text-white">Hover Levitation</span>
+                            <div class="text-[10px] text-white/50 font-mono">ease-in-out infinite 6s</div>
+                        </div>
+                        <div class="w-12 h-12 rounded-lg bg-indigo-500/20 border border-indigo-500/30 animate-float flex items-center justify-center text-indigo-400">
+                            <iconify-icon icon="lucide:arrow-up"></iconify-icon>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                        <div class="space-y-1">
+                            <span class="text-sm font-bold text-white">Radial Pulse</span>
+                            <div class="text-[10px] text-white/50 font-mono">cubic-bezier 4s</div>
+                        </div>
+                        <div class="w-12 h-12 relative flex items-center justify-center">
+                            <div class="absolute inset-0 border border-cyan-400/50 rounded-full animate-pulse-slow"></div>
+                            <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,1)]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initialization Scripts -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        if(window.UnicornStudio) { UnicornStudio.init() }
+    </script>
+</body>
+</html>
+"""
+
+with open(outfile, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Generated absolute design system directly into target assets folder.")
