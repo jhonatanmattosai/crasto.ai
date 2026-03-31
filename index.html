@@ -89,19 +89,17 @@
         /*
 Sequence animation intro. Usage:
 1) Insert this code in the <head>
-2) Add to Tailwind Classes: [animation:animationIn_0.8s_ease-out_0.1s_both]
+2) Add to Tailwind Classes: [animation:animationIn_0.45s_ease-out_0.05s_both]
 */
         @keyframes animationIn {
             0% {
                 opacity: 0;
-                transform: translateY(30px);
-                filter: blur(8px);
+                transform: translateY(18px);
             }
 
             100% {
                 opacity: 1;
                 transform: translateY(0);
-                filter: blur(0px);
             }
         }
 
@@ -121,7 +119,7 @@ Sequence animation intro. Usage:
         /*
         Sequence animation on scroll when visible. Requires Animation Keyframe. Usage:
         1) Insert this code in the <head> along with the Animation Keyframe code.
-        2) Add to Tailwind Classes: [animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll
+        2) Add to Tailwind Classes: [animation:animationIn_0.45s_ease-out_0.05s_both] animate-on-scroll
         */
         (function () {
             // Inject CSS for paused/running states
@@ -142,7 +140,7 @@ Sequence animation intro. Usage:
                             if (once) window.__inViewIO.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
+                }, { threshold: 0.1, rootMargin: "0px 0px 0px 0px" });
             }
             window.initInViewAnimations = function (selector = ".animate-on-scroll") {
                 document.querySelectorAll(selector).forEach((el) => {
@@ -326,7 +324,7 @@ scaleY(var(--tw-scale-y, 1))
         .seq-fade-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active .seq-fade-up { opacity: 1; transform: translateY(0); }
 
@@ -344,7 +342,7 @@ scaleY(var(--tw-scale-y, 1))
         .reveal.active .seq-code { animation: seqCodeReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         .seq-prog { width: 0%; position: relative; }
-        .reveal.active .seq-prog { animation: seqFill var(--duration, 1.2s) cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .reveal.active .seq-prog { animation: seqFill var(--duration, 0.7s) cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         .seq-ui { opacity: 0; transform: scale(0.95); }
         .reveal.active .seq-ui { animation: seqUiPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -504,7 +502,7 @@ scaleY(var(--tw-scale-y, 1))
             </div>
         </div>
         <header id="site-header"
-            class="flex [animation:animationIn_0.8s_ease-out_0.1s_both] fixed top-0 left-0 z-50 w-full pt-6 pr-4 pb-4 pl-4 md:pt-8 md:pr-8 md:pb-4 md:pl-8 items-center justify-between">
+            class="flex [animation:animationIn_0.45s_ease-out_0.05s_both] fixed top-0 left-0 z-50 w-full pt-6 pr-4 pb-4 pl-4 md:pt-8 md:pr-8 md:pb-4 md:pl-8 items-center justify-between">
             <div class="flex flex-1 items-center gap-2 md:gap-3">
                 <img src="static/img/crasto-logo-icon.png" alt="CRASTO.AI" class="h-6 md:h-8 w-auto">
                 <span
@@ -694,7 +692,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Badge -->
                 <div
-                    class="inline-flex [animation:animationIn_0.8s_ease-out_0.2s_both] bg-white/5 border-white/10 border rounded-full mb-6 pt-1.5 pr-4 pb-1.5 pl-4 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-sm gap-x-3 items-center">
+                    class="inline-flex [animation:animationIn_0.45s_ease-out_0.1s_both] bg-white/5 border-white/10 border rounded-full mb-6 pt-1.5 pr-4 pb-1.5 pl-4 shadow-[0_0_20px_rgba(6,182,212,0.2)] backdrop-blur-sm gap-x-3 items-center">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -706,7 +704,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- Headline -->
-                <h1 class="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[54px] leading-[1.08] [animation:animationIn_0.8s_ease-out_0.3s_both] font-light text-white tracking-tighter font-manrope mb-4"
+                <h1 class="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[54px] leading-[1.08] [animation:animationIn_0.45s_ease-out_0.15s_both] font-light text-white tracking-tighter font-manrope mb-4"
                     data-i18n="hero.h1">
                     Escalar não<br />
                     <span class="opacity-60">significa inflar a folha</span><br />
@@ -714,13 +712,13 @@ scaleY(var(--tw-scale-y, 1))
                 </h1>
 
                 <!-- Subheadline (accent) -->
-                <p class="text-xl md:text-2xl font-semibold text-cyan-400 [animation:animationIn_0.8s_ease-out_0.35s_both] mb-6 tracking-tight"
+                <p class="text-xl md:text-2xl font-semibold text-cyan-400 [animation:animationIn_0.45s_ease-out_0.17s_both] mb-6 tracking-tight"
                     data-i18n="hero.sub">
                     Tenha seu Agente de IA em até 24h.
                 </p>
 
                 <!-- Description -->
-                <p class="text-base sm:text-lg [animation:animationIn_0.8s_ease-out_0.4s_both] font-light text-slate-400 max-w-xl mb-8 md:mb-10 leading-relaxed"
+                <p class="text-base sm:text-lg [animation:animationIn_0.45s_ease-out_0.2s_both] font-light text-slate-400 max-w-xl mb-8 md:mb-10 leading-relaxed"
                     data-i18n="hero.desc">
                     A Inteligência Artificial da Crasto trabalha ininterruptamente, unificando seu ERP estrutural aos
                     Agentes Autônomos em uma única operação. Menos planilhas. Mais inteligência e margem de lucro.
@@ -728,7 +726,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CTAs -->
                 <div
-                    class="flex flex-col sm:flex-row gap-4 items-center [animation:animationIn_0.8s_ease-out_0.5s_both] mb-10 md:mb-12 w-full max-w-md mx-auto lg:mx-0">
+                    class="flex flex-col sm:flex-row gap-4 items-center [animation:animationIn_0.45s_ease-out_0.25s_both] mb-10 md:mb-12 w-full max-w-md mx-auto lg:mx-0">
                     <a href="#" onclick="openCalendar();return false;"
                         class="group inline-flex transition-all duration-300 active:scale-95 relative items-center justify-center shrink-0 w-full sm:w-auto">
                         <div
@@ -756,7 +754,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Social Proof Numbers -->
                 <div
-                    class="flex flex-row justify-center lg:justify-start gap-8 sm:gap-12 [animation:animationIn_0.8s_ease-out_0.6s_both] border-t border-white/10 pt-8 w-full max-w-md">
+                    class="flex flex-row justify-center lg:justify-start gap-8 sm:gap-12 [animation:animationIn_0.45s_ease-out_0.3s_both] border-t border-white/10 pt-8 w-full max-w-md">
                     <div class="flex flex-col">
                         <span
                             class="text-3xl md:text-4xl font-light tracking-tighter text-white font-manrope">24h</span>
@@ -780,7 +778,7 @@ scaleY(var(--tw-scale-y, 1))
 
             <!-- RIGHT: Chat Mockup Visual -->
             <div
-                class="hidden lg:flex flex-1 items-center justify-center relative [animation:animationIn_0.8s_ease-out_0.45s_both]">
+                class="hidden lg:flex flex-1 items-center justify-center relative [animation:animationIn_0.45s_ease-out_0.22s_both]">
                 <div id="chat-3d" class="relative"
                     style="transform-style:preserve-3d; transition:transform 0.12s ease; will-change:transform; cursor:default;">
 
@@ -1014,18 +1012,18 @@ scaleY(var(--tw-scale-y, 1))
             <!-- Section Header -->
             <div class="flex flex-col items-center text-center mb-16 md:mb-20">
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] flex items-center gap-4 mb-6">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] flex items-center gap-4 mb-6">
                     <div class="h-px w-12 bg-gradient-to-r from-transparent to-cyan-500/60"></div>
                     <span class="text-xs text-cyan-400 tracking-[0.4em] font-mono uppercase font-bold"
                         data-i18n="s3.eyebrow">Por que agentes de IA</span>
                     <div class="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500/60"></div>
                 </div>
-                <h2 class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-manrope font-light text-white tracking-tighter leading-[1.1] mb-6 max-w-3xl"
+                <h2 class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-manrope font-light text-white tracking-tighter leading-[1.1] mb-6 max-w-3xl"
                     data-i18n="s3.h2">
                     <span class="text-glassy">IA que vende, atende melhor</span> <span class="opacity-50">e faz sua
                         empresa crescer.</span>
                 </h2>
-                <p class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both] text-base md:text-lg text-slate-400 font-light max-w-2xl leading-relaxed"
+                <p class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both] text-base md:text-lg text-slate-400 font-light max-w-2xl leading-relaxed"
                     data-i18n="s3.sub">
                     Processos manuais, equipe sobrecarregada, leads sem resposta e decisões sem apoio. Nossos agentes de
                     IA resolvem isso em dias, não em meses.
@@ -1037,7 +1035,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 1 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1054,7 +1052,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 2 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.15s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.07s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1071,7 +1069,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 3 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1088,7 +1086,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 4 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1105,7 +1103,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 5 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.15s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.07s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1121,7 +1119,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- Card 6 -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] relative overflow-hidden rounded-3xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl p-7 md:p-8 group hover:bg-white/[0.06] hover:border-white/12 transition-colors duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     <div
                         class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/8 blur-3xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none rounded-full">
                     </div>
@@ -1286,18 +1284,18 @@ scaleY(var(--tw-scale-y, 1))
             <!-- Section Header -->
             <div class="flex flex-col items-center text-center mb-16 md:mb-20">
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] flex items-center gap-4 mb-6">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] flex items-center gap-4 mb-6">
                     <div class="h-px w-12 bg-gradient-to-r from-transparent to-cyan-500/60"></div>
                     <span class="text-xs text-cyan-400 tracking-[0.4em] font-mono uppercase font-bold"
                         data-i18n="s4.eyebrow">Benefícios Reais</span>
                     <div class="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500/60"></div>
                 </div>
-                <h2 class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-manrope font-light text-white tracking-tighter leading-[1.1] mb-6 max-w-3xl"
+                <h2 class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-manrope font-light text-white tracking-tighter leading-[1.1] mb-6 max-w-3xl"
                     data-i18n="s4.h2">
                     <span class="text-glassy">O que muda quando a IA</span> <span class="opacity-50">assume seu
                         operacional</span>
                 </h2>
-                <p class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both] text-base md:text-lg text-slate-400 font-light max-w-2xl leading-relaxed"
+                <p class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both] text-base md:text-lg text-slate-400 font-light max-w-2xl leading-relaxed"
                     data-i18n="s4.sub">
                     Seis transformações concretas que acontecem quando os agentes da Crasto entram em operação.
                 </p>
@@ -1308,7 +1306,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 1: Vendas que não dependem de sorte -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent">
                     </div>
@@ -1401,7 +1399,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 2: Clientes atendidos na hora -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.15s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.07s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent">
                     </div>
@@ -1486,7 +1484,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 3: Operação sem apagar incêndio -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] md:col-span-2 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent">
                     </div>
@@ -1559,7 +1557,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 4: Decisões com dados (col-3) -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] md:col-span-3 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] md:col-span-3 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent">
                     </div>
@@ -1652,7 +1650,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 5: Equipe livre do repetitivo (col-3) -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.15s_both] md:col-span-3 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.07s_both] md:col-span-3 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent">
                     </div>
@@ -1762,7 +1760,7 @@ scaleY(var(--tw-scale-y, 1))
 
                 <!-- CARD 6: Escala sem contratar (col-6, full width) -->
                 <div
-                    class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both] md:col-span-6 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
+                    class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both] md:col-span-6 s4-card group relative rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#0d1117] to-[#080b10] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] overflow-hidden">
                     <div
                         class="card-top-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent">
                     </div>
@@ -1961,7 +1959,7 @@ scaleY(var(--tw-scale-y, 1))
 
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Section Header -->
-            <div class="text-center mb-16 md:mb-24 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both]">
+            <div class="text-center mb-16 md:mb-24 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both]">
                 <span
                     class="inline-block text-[10px] md:text-xs font-bold tracking-[0.4em] text-cyan-400 uppercase mb-4"
                     data-i18n="s6.eyebrow">TRANSFORMAÇÃO</span>
@@ -1983,7 +1981,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- Left: Legacy State Wrapper (Reveal) -->
-                <div class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] h-full">
+                <div class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] h-full">
                     <!-- Inner 3D Card (Tilt Interaction) -->
                     <div id="transform-card-before"
                         class="glass-panel p-10 md:p-14 rounded-[3rem] border-white/5 bg-white/[0.01] hover:bg-white/[0.02] transition-all duration-700 group relative overflow-hidden transform-gpu h-full"
@@ -2071,7 +2069,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- Right: AURA State Wrapper (Reveal) -->
-                <div class="animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both] h-full">
+                <div class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both] h-full">
                     <!-- Inner 3D Card (Tilt Interaction) -->
                     <div id="transform-card-after"
                         class="glass-panel p-10 md:p-14 rounded-[3rem] border-cyan-500/40 bg-cyan-950/10 hover:bg-cyan-950/20 transition-all duration-700 border shadow-[0_40px_100px_-20px_rgba(6,182,212,0.15)] relative overflow-hidden group transform-gpu h-full"
@@ -2153,7 +2151,7 @@ scaleY(var(--tw-scale-y, 1))
                                     data-i18n="s6.after.i6">Pipeline comercial sempre ativo</span>
                             </li>
                             <li
-                                class="flex items-start gap-4 animate-on-scroll [animation:animationIn_0.6s_ease-out_0.8s_both]">
+                                class="flex items-start gap-4 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.3s_both]">
                                 <div
                                     class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-[11px] text-cyan-400 mt-0.5 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                                     ✓</div>
@@ -2194,7 +2192,7 @@ scaleY(var(--tw-scale-y, 1))
             <div class="max-w-5xl mx-auto relative z-10 text-center">
             <!-- Urgency Badge -->
             <div
-                class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 mb-10 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both]">
+                class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/5 mb-10 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both]">
                 <span class="relative flex h-2 w-2">
                     <span
                         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -2205,7 +2203,7 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- High-Impact Headline -->
-            <h2 class="text-4xl md:text-7xl font-manrope font-light text-white leading-[1.1] tracking-tight mb-8 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]" style="text-wrap: balance;">
+            <h2 class="text-4xl md:text-7xl font-manrope font-light text-white leading-[1.1] tracking-tight mb-8 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]" style="text-wrap: balance;">
                 <span data-i18n="s7.h2.line1">Se você não colocar IA na sua empresa,</span>
                 <span class="font-bold text-glassy relative">
                     <span data-i18n="s7.h2.line2">outra empresa vai te engolir.</span>
@@ -2214,14 +2212,14 @@ scaleY(var(--tw-scale-y, 1))
             </h2>
 
             <!-- Subtitle -->
-            <p class="text-lg md:text-xl text-white/50 font-light max-w-3xl mx-auto mb-16 leading-relaxed animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both]"
+            <p class="text-lg md:text-xl text-white/50 font-light max-w-3xl mx-auto mb-16 leading-relaxed animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both]"
                 data-i18n="s7.sub">
                 Você foca em estratégia e crescimento enquanto nós aceleramos suas vendas, gestão e eficiência
                 operacional.
             </p>
 
             <!-- Holographic CTA Container -->
-            <div class="relative inline-block group animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+            <div class="relative inline-block group animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                 <div
                     class="absolute -inset-12 border border-white/5 rounded-full animate-[spin_20s_linear_infinite] opacity-20">
                 </div>
@@ -2255,15 +2253,15 @@ scaleY(var(--tw-scale-y, 1))
         <section id="planos" class="relative pt-20 md:pt-24 pb-28 md:pb-48">
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center mb-12">
-            <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.8s_ease-out_both]" data-i18n="s8.eyebrow">PLANOS</span>
-            <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]" data-i18n="s8.h2">Escolha o agente certo<br>para o seu negócio</h2>
-            <p class="text-white/40 max-w-2xl mx-auto font-light animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both]" data-i18n="s8.sub">Todos com dashboard de controle, respostas por texto e áudio humanizado e suporte humano dedicado.</p>
+            <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.45s_ease-out_both]" data-i18n="s8.eyebrow">PLANOS</span>
+            <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]" data-i18n="s8.h2">Escolha o agente certo<br>para o seu negócio</h2>
+            <p class="text-white/40 max-w-2xl mx-auto font-light animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both]" data-i18n="s8.sub">Todos com dashboard de controle, respostas por texto e áudio humanizado e suporte humano dedicado.</p>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 relative">
                 <!-- Card 1 -->
-                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.08] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:-translate-y-2 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.08] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:-translate-y-2 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="text-left">
                         <span class="text-[16px] font-mono text-cyan-400/80 block uppercase tracking-[0.2em] mb-4" data-i18n="s8.c1.tag">Vendas, atendimento, marketing e relacionamento</span>
                         <h3 class="text-2xl font-manrope font-bold text-white mb-2" data-i18n="s8.c1.title">Agente Acelerador Comercial</h3>
@@ -2307,7 +2305,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- Card 2 -->
-                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.08] to-transparent border-[1.5px] border-white/20 backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:-translate-y-4 ring-1 ring-cyan-500/30 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.5s_both]">
+                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.08] to-transparent border-[1.5px] border-white/20 backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:-translate-y-4 ring-1 ring-cyan-500/30 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.25s_both]">
                     <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-5 py-2 bg-gradient-to-r from-orange-400 to-orange-600 text-white text-[10px] font-bold rounded-full shadow-xl flex items-center gap-2" data-i18n="s8.badge.popular">
                         <iconify-icon icon="lucide:star" class="text-xs"></iconify-icon>
                         Mais escolhido
@@ -2355,7 +2353,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- Card 3 -->
-                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.08] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:-translate-y-2 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.6s_both]">
+                <div class="pricing-card group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.04] to-transparent border border-white/[0.08] backdrop-blur-xl transition-all duration-500 hover:border-white/20 hover:-translate-y-2 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.3s_both]">
                     <div class="text-left">
                         <span class="text-[16px] font-mono text-cyan-400/80 block uppercase tracking-[0.2em] mb-4" data-i18n="s8.c3.tag">Consultoria executiva, análise estratégica e alta gestão</span>
                         <h3 class="text-2xl font-manrope font-bold text-white mb-2" data-i18n="s8.c3.title">Agente Diretor Executivo</h3>
@@ -2400,7 +2398,7 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Single CTA below all cards -->
-            <div class="flex justify-center mt-12 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+            <div class="flex justify-center mt-12 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                 <a href="#" onclick="openCalendar();return false;" class="group relative inline-flex items-center gap-3 px-12 py-5 rounded-full bg-white text-black font-manrope font-bold text-base tracking-wide hover:bg-cyan-50 transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.35)] overflow-hidden">
                     <span class="relative z-10" data-i18n="s8.cta.spec">Ver meu Agente em Ação — 15 min grátis</span>
                     <iconify-icon icon="lucide:arrow-right" class="text-lg group-hover:translate-x-1 transition-transform relative z-10"></iconify-icon>
@@ -2427,15 +2425,15 @@ scaleY(var(--tw-scale-y, 1))
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Header -->
             <div class="text-center mb-20">
-                <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both]" data-i18n="s9.eyebrow">SISTEMA DE GESTÃO</span>
-                <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]" data-i18n="s9.h2">Seus agentes vêm com um<br/>sistema completo de gestão</h2>
-                <p class="text-white/40 max-w-2xl mx-auto font-light animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both]" data-i18n="s9.sub">Muito mais do que um agente de IA — você recebe uma plataforma estratégica.</p>
+                <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both]" data-i18n="s9.eyebrow">SISTEMA DE GESTÃO</span>
+                <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]" data-i18n="s9.h2">Seus agentes vêm com um<br/>sistema completo de gestão</h2>
+                <p class="text-white/40 max-w-2xl mx-auto font-light animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both]" data-i18n="s9.sub">Muito mais do que um agente de IA — você recebe uma plataforma estratégica.</p>
             </div>
 
             <!-- Management System Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Feature 1 -->
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="lucide:users" class="text-2xl"></iconify-icon>
                     </div>
@@ -2443,7 +2441,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-white/40 font-light leading-relaxed" data-i18n="s9.f1.desc">Administre toda a base de clientes e leads em um único painel.</p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.8s_ease-out_0.5s_both]">
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.45s_ease-out_0.25s_both]">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="lucide:message-circle-code" class="text-2xl"></iconify-icon>
                     </div>
@@ -2451,7 +2449,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-white/40 font-light leading-relaxed" data-i18n="s9.f2.desc">Biblioteca inteligente de argumentos para cada tipo de objeção.</p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.8s_ease-out_0.6s_both]">
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.45s_ease-out_0.3s_both]">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="ic:baseline-whatsapp" class="text-2xl"></iconify-icon>
                     </div>
@@ -2459,7 +2457,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-white/40 font-light leading-relaxed" data-i18n="s9.f3.desc">Transforme seu número em um canal acessível por todos os vendedores.</p>
                 </div>
                 <!-- Feature 4 -->
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.8s_ease-out_0.7s_both]">
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group animate-on-scroll [animation:animationIn_0.45s_ease-out_0.35s_both]">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="lucide:user-plus" class="text-2xl"></iconify-icon>
                     </div>
@@ -2467,7 +2465,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-white/40 font-light leading-relaxed" data-i18n="s9.f4.desc">Ferramentas para recrutar, acompanhar e desenvolver sua equipe.</p>
                 </div>
                 <!-- Feature 5 -->
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group lg:col-span-2 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.8s_both]">
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/30 hover:bg-white/[0.04] transition-all group lg:col-span-2 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.4s_both]">
                     <div class="flex flex-col md:flex-row gap-8 items-center">
                         <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform flex-shrink-0">
                             <iconify-icon icon="lucide:layout-dashboard" class="text-2xl"></iconify-icon>
@@ -2491,9 +2489,9 @@ scaleY(var(--tw-scale-y, 1))
         
         <!-- Section Header -->
         <div class="text-center mb-32 relative z-20 px-4">
-            <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both]" data-i18n="s10.eyebrow">COMO COMEÇAR</span>
-            <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]" data-i18n="s10.h2">6 passos. Simples assim.</h2>
-            <p class="text-lg font-light text-white/40 max-w-2xl mx-auto animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both]" data-i18n="s10.sub_intro">Acompanhe o ciclo exato de ativação da sua IA. Do setup inicial à operação em escala real.</p>
+            <span class="font-mono text-[15px] text-cyan-400 font-bold tracking-[0.4em] uppercase mb-4 block animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both]" data-i18n="s10.eyebrow">COMO COMEÇAR</span>
+            <h2 class="text-4xl md:text-6xl font-manrope font-light text-white mb-6 leading-tight animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]" data-i18n="s10.h2">6 passos. Simples assim.</h2>
+            <p class="text-lg font-light text-white/40 max-w-2xl mx-auto animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both]" data-i18n="s10.sub_intro">Acompanhe o ciclo exato de ativação da sua IA. Do setup inicial à operação em escala real.</p>
         </div>
 
         <div class="container max-w-5xl mx-auto pr-4 pl-4 relative z-10">
@@ -2501,13 +2499,13 @@ scaleY(var(--tw-scale-y, 1))
             <div class="absolute left-[31px] md:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent md:-translate-x-1/2 block"></div>
 
             <!-- Passo 1: Escolha o agente -->
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-white/30 transition-colors shadow-[0_0_15px_rgba(0,0,0,0.5)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] font-mono text-cyan-400 mb-5">
                         <iconify-icon icon="lucide:search"></iconify-icon>
                         <span data-i18n="s10.s1.tag">Seleção Ativa <span class="text-white/30 ml-1">&lt; 1min</span></span>
@@ -2516,7 +2514,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm md:ml-auto" data-i18n="s10.s1.desc">Comercial, Liderança ou Executivo — qual resolve sua dor agora?</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 shadow-xl w-full max-w-sm transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.04] hover:border-cyan-500/20">
                         <div class="flex items-center gap-2 mb-4">
                             <div class="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
@@ -2539,13 +2537,13 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Passo 2: Contrate online -->
-            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-white/30 transition-colors shadow-[0_0_15px_rgba(0,0,0,0.5)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] font-mono text-emerald-400 mb-5">
                         <iconify-icon icon="lucide:shield-check"></iconify-icon>
                         <span data-i18n="s10.s2.tag">Checkout Seguro</span>
@@ -2554,7 +2552,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm" data-i18n="s10.s2.desc">Checkout simples e seguro, sem burocracia.</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 shadow-xl w-full max-w-sm transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.04] hover:border-emerald-500/20">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -2579,13 +2577,13 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Passo 3: Acesse o portal -->
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-white/30 transition-colors shadow-[0_0_15px_rgba(0,0,0,0.5)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] font-mono text-cyan-400 mb-5">
                         <iconify-icon icon="lucide:key"></iconify-icon>
                         <span data-i18n="s10.s3.tag">Acesso Instantâneo</span>
@@ -2594,7 +2592,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm md:ml-auto" data-i18n="s10.s3.desc">Dashboard de controle + suporte humano dedicado imediato.</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-4 rounded-2xl bg-[#060913] border border-white/10 shadow-2xl w-full max-w-sm flex flex-col gap-3 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/30">
                         <div class="flex gap-3 items-center">
                             <div class="w-10 h-10 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center seq-ui" style="animation-delay: 600ms;">
@@ -2615,13 +2613,13 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Passo 4: Configure com apoio -->
-            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-white/30 transition-colors shadow-[0_0_15px_rgba(0,0,0,0.5)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] font-mono text-cyan-400 mb-5">
                         <iconify-icon icon="lucide:users"></iconify-icon>
                         <span data-i18n="s10.s4.tag">Cocreação Humana + IA</span>
@@ -2630,7 +2628,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm" data-i18n="s10.s4.desc">Especialista em IA orienta tudo. Você não faz nada sozinho.</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 shadow-xl w-full max-w-sm flex items-center gap-4 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.04]">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-indigo-600 flex items-center justify-center shrink-0 seq-ui shadow-[0_0_20px_rgba(6,182,212,0.3)]" style="animation-delay: 700ms;">
                             <iconify-icon icon="lucide:bot" class="text-white text-xl"></iconify-icon>
@@ -2646,13 +2644,13 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Passo 5: Publique -->
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-32 group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-white/10 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-white/30 transition-colors shadow-[0_0_15px_rgba(0,0,0,0.5)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 md:text-right flex flex-col sm:items-start md:items-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] font-mono text-cyan-400 mb-5">
                         <iconify-icon icon="lucide:rocket"></iconify-icon>
                         <span data-i18n="s10.s5.tag">Deploy em Produção</span>
@@ -2661,7 +2659,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm md:ml-auto" data-i18n="s10.s5.desc">Agente no ar com um clique.</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 mt-8 md:mt-0 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-6 rounded-2xl bg-[#060913] border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.1)] w-full max-w-sm transition-all duration-500 hover:-translate-y-2">
                         <div class="flex items-center justify-between mb-6">
                             <div class="flex items-center gap-2">
@@ -2681,13 +2679,13 @@ scaleY(var(--tw-scale-y, 1))
             </div>
 
             <!-- Passo 6: Comece a operar -->
-            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center group reveal animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+            <div class="relative flex flex-col md:flex-row-reverse justify-between items-start md:items-center group reveal animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                 <!-- Dot -->
                 <div class="absolute left-[15px] md:left-1/2 top-2 md:top-1/2 w-8 h-8 rounded-full border border-cyan-400/50 bg-[#02040A] flex items-center justify-center md:-translate-x-1/2 md:-translate-y-1/2 z-10 group-hover:border-cyan-400 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.3)] flex">
                     <div class="w-2 h-2 rounded-full seq-dot"></div>
                 </div>
                 <!-- Text Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-16 md:text-left flex flex-col items-start animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both]">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[11px] font-mono text-cyan-400 mb-5">
                         <iconify-icon icon="lucide:activity"></iconify-icon>
                         <span data-i18n="s10.s6.tag">Escala Comercial Ativa</span>
@@ -2696,7 +2694,7 @@ scaleY(var(--tw-scale-y, 1))
                     <p class="text-[16px] text-white/40 leading-relaxed max-w-sm" data-i18n="s10.s6.desc">A partir de 24h — seu agente já está trabalhando por você.</p>
                 </div>
                 <!-- Visual Content -->
-                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+                <div class="w-full md:w-[45%] pl-[60px] md:pl-0 md:pr-16 mt-8 md:mt-0 flex md:justify-end animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
                     <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/5 shadow-xl w-full max-w-sm transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/20">
                         <div class="text-[10px] text-white/30 font-mono mb-4 text-center" data-i18n="s10.s6.v1">TRAFFIC MONITORING</div>
                         <div class="flex items-end gap-1.5 h-20 px-2">
@@ -2713,7 +2711,7 @@ scaleY(var(--tw-scale-y, 1))
         </div>
 
         <!-- Footer Note -->
-        <div class="mt-32 text-center animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both]">
+        <div class="mt-32 text-center animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both]">
             <p class="text-[16px] font-mono text-white/50 tracking-[0.3em] uppercase max-w-xl mx-auto leading-relaxed" data-i18n="s10.note">
                 * Comercial: 24h · Liderança: 5 dias úteis · Executivo: 7 dias úteis
             </p>
@@ -2728,14 +2726,14 @@ scaleY(var(--tw-scale-y, 1))
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.1s_both]">
+            <div class="text-center mb-20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.05s_both]">
                 <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[11px] font-mono text-cyan-400 uppercase tracking-[0.2em] mb-6" data-i18n="s11.eyebrow">DÚVIDAS FREQUENTES</span>
                 <h2 class="text-4xl md:text-5xl font-manrope font-light text-white mb-6" data-i18n="s11.h2">Perguntas comuns</h2>
             </div>
 
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.2s_both] relative faq-tilt">
+                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] relative faq-tilt">
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
                     <button onclick="toggleFaq(this)" class="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none relative z-10">
                         <span class="text-[18px] font-manrope font-semibold text-white group-hover:text-cyan-400 transition-colors leading-snug" data-i18n="s11.q1">O que é um agente de IA empresarial?</span>
@@ -2751,7 +2749,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.3s_both] relative faq-tilt">
+                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.15s_both] relative faq-tilt">
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
                     <button onclick="toggleFaq(this)" class="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none relative z-10">
                         <span class="text-[18px] font-manrope font-semibold text-white group-hover:text-cyan-400 transition-colors leading-snug" data-i18n="s11.q2">Qual a diferença entre os 3 agentes?</span>
@@ -2767,7 +2765,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.4s_both] relative faq-tilt">
+                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.2s_both] relative faq-tilt">
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
                     <button onclick="toggleFaq(this)" class="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none relative z-10">
                         <span class="text-[18px] font-manrope font-semibold text-white group-hover:text-cyan-400 transition-colors leading-snug" data-i18n="s11.q3">Preciso de TI ou conhecimento técnico?</span>
@@ -2783,7 +2781,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.5s_both] relative faq-tilt">
+                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.25s_both] relative faq-tilt">
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
                     <button onclick="toggleFaq(this)" class="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none relative z-10">
                         <span class="text-[18px] font-manrope font-semibold text-white group-hover:text-cyan-400 transition-colors leading-snug" data-i18n="s11.q4">Serve pro meu setor?</span>
@@ -2799,7 +2797,7 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
 
                 <!-- FAQ Item 5 -->
-                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.8s_ease-out_0.6s_both] relative faq-tilt">
+                <div class="faq-item group glass-panel rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/20 animate-on-scroll [animation:animationIn_0.45s_ease-out_0.3s_both] relative faq-tilt">
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-cyan-400/0 -translate-x-full group-hover:animate-shimmer pointer-events-none"></div>
                     <button onclick="toggleFaq(this)" class="w-full px-8 py-7 flex items-center justify-between text-left focus:outline-none relative z-10">
                         <span class="text-[18px] font-manrope font-semibold text-white group-hover:text-cyan-400 transition-colors leading-snug" data-i18n="s11.q5">O agente responde com áudio também?</span>
@@ -2821,7 +2819,7 @@ scaleY(var(--tw-scale-y, 1))
     <section class="py-32 relative overflow-hidden bg-[#02040A] border-t border-white/5 reveal">
         <!-- Background Effects Grid -->
         <div class="z-10 max-w-7xl mx-auto px-6 relative">
-            <div class="[animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll group/cta bg-gradient-to-b from-slate-800 to-slate-900 border border-white/10 rounded-[3.5rem] relative shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] p-2">
+            <div class="[animation:animationIn_0.45s_ease-out_0.05s_both] animate-on-scroll group/cta bg-gradient-to-b from-slate-800 to-slate-900 border border-white/10 rounded-[3.5rem] relative shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] p-2">
                 <!-- Inner Border Glow -->
                 <div class="absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-70 z-50 pointer-events-none"></div>
                 
