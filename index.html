@@ -89,7 +89,7 @@
             visibility: hidden !important;
         }
     </style>
-    <script src="static/vendor/unicornStudio_f86b9c4abf24.js" defer></script>
+    <script src="static/vendor/unicornStudio_f86b9c4abf24.js"></script>
     <style class="">
         /*
 Sequence animation intro. Usage:
@@ -373,6 +373,8 @@ scaleY(var(--tw-scale-y, 1))
         .main-content { overflow: visible; height: auto; }
         /* Prevent widow words */
         h1, h2, h3, h4 { text-wrap: balance; }
+        /* Mobile body text size */
+        @media (max-width: 767px) { p { font-size: 16px !important; } }
         /* Fixed header */
         #site-header { transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
         #site-header.scrolled {
@@ -397,12 +399,9 @@ scaleY(var(--tw-scale-y, 1))
                 </div>
                 <script type="text/javascript">
                     (function(){
-    function initUS(){
-        if(window.UnicornStudio&&!window.UnicornStudio.isInitialized&&window.UnicornStudio.init){
-            UnicornStudio.init();window.UnicornStudio.isInitialized=true;
-        }
+    if(window.UnicornStudio&&!window.UnicornStudio.isInitialized&&window.UnicornStudio.init){
+        UnicornStudio.init();window.UnicornStudio.isInitialized=true;
     }
-    window.addEventListener("load",initUS);
 })();
                 </script>
             </div>
@@ -511,7 +510,7 @@ scaleY(var(--tw-scale-y, 1))
                                         class="text-[9px] uppercase tracking-widest text-white/40 font-medium">US</span>
                                     <span class="text-[11px] text-white/60">USA HQ</span>
                                 </div>
-                                <span class="text-[14px] font-bold text-white tracking-wide">+1 (302) 555-0122</span>
+                                <span class="text-[14px] font-bold text-white tracking-wide">(407) 334-9528</span>
                             </div>
                             <div
                                 class="flex flex-col justify-center px-3 py-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-left">
@@ -520,7 +519,7 @@ scaleY(var(--tw-scale-y, 1))
                                         class="text-[9px] uppercase tracking-widest text-white/40 font-medium">JP</span>
                                     <span class="text-[11px] text-white/60">Japan Hub</span>
                                 </div>
-                                <span class="text-[14px] font-bold text-white tracking-wide">+81 3-4510-0199</span>
+                                <span class="text-[14px] font-bold text-white tracking-wide">+81 07015362595</span>
                             </div>
                         </div>
                     </div>
@@ -1890,7 +1889,7 @@ scaleY(var(--tw-scale-y, 1))
                 <div class="animate-on-scroll [animation:animationIn_0.45s_ease-out_0.1s_both] h-full">
                     <!-- Inner 3D Card (Tilt Interaction) -->
                     <div id="transform-card-before"
-                        class="glass-panel p-10 md:p-14 rounded-[3rem] border-white/5 bg-white/[0.01] hover:bg-white/[0.02] transition-all duration-700 group relative overflow-hidden transform-gpu h-full"
+                        class="glass-panel p-10 md:p-14 rounded-[3rem] border-white/5 max-md:border-white/10 bg-white/[0.01] max-md:bg-white/[0.06] hover:bg-white/[0.02] transition-all duration-700 group relative overflow-hidden transform-gpu h-full"
                         style="transform-style: preserve-3d;">
                         <div class="flex items-center gap-5 mb-12 translate-z-20 transform-style: preserve-3d">
                             <div
@@ -2739,11 +2738,11 @@ scaleY(var(--tw-scale-y, 1))
                     </div>
 
                     <script>
-                        window.addEventListener("load",function(){
-                            if(window.UnicornStudio&&!window.UnicornStudio.isInitialized){
+                        (function(){
+                            if(window.UnicornStudio&&!window.UnicornStudio.isInitialized&&window.UnicornStudio.init){
                                 UnicornStudio.init();window.UnicornStudio.isInitialized=true;
                             }
-                        });
+                        })();
                     </script>
 
                     <!-- Volumetric Glows -->
