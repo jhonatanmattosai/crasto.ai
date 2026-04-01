@@ -3,9 +3,17 @@
 
 <head>
 <meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.tailwindcss.com">
+<link rel="dns-prefetch" href="https://code.iconify.design">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>CRASTO.AI — Agentes de Inteligência Artificial</title>
-    <link rel="icon" type="image/png" href="static/img/crasto-favicon-hd.png" />
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon.svg">
+    <link rel="icon" type="image/png" href="static/img/favicon-512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="static/img/favicon-512.png">
     <meta name="description" content="Agentes de IA para vendas, gestão e operação. Seu primeiro agente em 24h." />
     <meta property="og:title" content="CRASTO.AI — Agentes de Inteligência Artificial" />
     <meta property="og:description" content="Agentes de IA para vendas, gestão e operação. Seu primeiro agente em 24h." />
@@ -76,15 +84,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
     </style>
-    <meta
-        content="font-roboto,font-montserrat,font-poppins,font-merriweather,font-bricolage,font-space-grotesk,font-work-sans,font-pt-serif,font-geist-mono,font-space-mono,font-quicksand,font-newsreader,font-google-sans-flex,font-oswald,font-dm-sans,font-cormorant,font-playfair,font-instrument-serif,font-jakarta,font-nunito,font-geist"
-        name="disabled-font-classes" />
-    <style>
+<style>
         .invisible {
             visibility: hidden !important;
         }
     </style>
-    <script src="static/vendor/unicornStudio_f86b9c4abf24.js"></script>
+    <script src="static/vendor/unicornStudio_f86b9c4abf24.js" defer></script>
     <style class="">
         /*
 Sequence animation intro. Usage:
@@ -157,8 +162,8 @@ Sequence animation intro. Usage:
             font-family: 'Manrope', sans-serif !important;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
-        id="all-fonts-link-font-instrument-serif" rel="stylesheet" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" as="style" onload="this.rel='stylesheet'" id="all-fonts-link-font-instrument-serif">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
     <style id="all-fonts-style-font-instrument-serif">
         .font-instrument-serif {
             font-family: 'Instrument Serif', serif !important;
@@ -362,120 +367,14 @@ scaleY(var(--tw-scale-y, 1))
         gtag('config', 'G-2M6V79H761');
     </script>
     <!-- aura-ga4-end -->
-    <style data-scroll-fix="true">
-        /* Scroll fixes for offline viewing */
-        html,
-        body {
-            overflow: auto !important;
-            overflow-x: hidden !important;
-            height: auto !important;
-            min-height: 100% !important;
-            scroll-behavior: smooth !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        /* Force visibility - many sites use JS animations for initial display */
-        body,
-        .wrapper,
-        main,
-        #__next,
-        #app,
-        .page,
-        .content {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-        }
-
-        /* Disable loader/preloader overlays */
-        .loader,
-        .preloader,
-        .loading,
-        [class*="loader"],
-        [class*="preloader"] {
-            display: none !important;
-            opacity: 0 !important;
-        }
-
-        /* Show elements that might be hidden for animation */
-        .word-inner,
-        .char,
-        .line,
-        [data-aos],
-        [data-scroll],
-        .hero-text span,
-        .hero-fade,
-        [class*="hero"] span {
-            opacity: 1 !important;
-            transform: none !important;
-            visibility: visible !important;
-        }
-
-        /* Reset Tailwind animation utility classes */
-        .translate-y-full,
-        .translate-x-full,
-        .-translate-y-full,
-        .-translate-x-full,
-        .translate-y-1\/2,
-        .-translate-y-1\/2,
-        .translate-y-\[100\%\],
-        .translate-y-\[110\%\] {
-            transform: none !important;
-        }
-
-        /* Force visibility on common hidden-for-animation patterns */
-        .opacity-0,
-        [class*="opacity-0"] {
-            opacity: 1 !important;
-        }
-
-        /* Reset scale transforms used for animations */
-        .scale-0,
-        .scale-50,
-        .scale-75 {
-            transform: none !important;
-        }
-
-        html.lenis,
-        html.lenis-smooth,
-        body.lenis,
-        body.lenis-smooth,
-        .lenis-wrapper,
-        .lenis-content,
-        [data-lenis-prevent],
-        [data-scroll-container] {
-            overflow: visible !important;
-            height: auto !important;
-        }
-
-        /* Fix flex containers that might cut off content */
-        body.flex.items-center,
-        body.flex.justify-center {
-            align-items: flex-start !important;
-            min-height: 100vh;
-            height: auto !important;
-        }
-
-        /* Ensure main content scrolls */
-        main,
-        #__next,
-        #__nuxt,
-        #app,
-        .main-content {
-            overflow: visible !important;
-            height: auto !important;
-        }
-
-        /* Prevent widow words in all headings */
-        h1, h2, h3, h4 {
-            text-wrap: balance;
-        }
-
-        /* Fixed header scroll behavior */
-        #site-header {
-            transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
+    <style>
+        /* Base layout */
+        html, body { overflow-x: hidden; height: auto; min-height: 100%; }
+        .main-content { overflow: visible; height: auto; }
+        /* Prevent widow words */
+        h1, h2, h3, h4 { text-wrap: balance; }
+        /* Fixed header */
+        #site-header { transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
         #site-header.scrolled {
             background-color: rgba(2, 4, 10, 0.75);
             backdrop-filter: blur(24px);
@@ -485,7 +384,7 @@ scaleY(var(--tw-scale-y, 1))
         }
     </style>
     <!-- Iconify for icons -->
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
 </head>
 
 <body class="antialiased overflow-x-hidden min-h-screen text-slate-300 bg-[#000000] relative">
@@ -497,14 +396,21 @@ scaleY(var(--tw-scale-y, 1))
                 <div class="absolute w-full h-full left-0 top-0 z-0" data-us-project="U7tLRvdF7ikcfxcCHs65">
                 </div>
                 <script type="text/javascript">
-                    !function () { if (!window.UnicornStudio) { window.UnicornStudio = { isInitialized: !1 }; var i = document.createElement("script"); i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.0-1/dist/unicornStudio.umd.js"; i.onload = function () { if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", function () { UnicornStudio.init(); window.UnicornStudio.isInitialized = !0 }) } else { UnicornStudio.init(); window.UnicornStudio.isInitialized = !0 } }; (document.head || document.body).appendChild(i) } else if (!window.UnicornStudio.isInitialized && window.UnicornStudio.init) { UnicornStudio.init(); window.UnicornStudio.isInitialized = !0 } }();
+                    (function(){
+    function initUS(){
+        if(window.UnicornStudio&&!window.UnicornStudio.isInitialized&&window.UnicornStudio.init){
+            UnicornStudio.init();window.UnicornStudio.isInitialized=true;
+        }
+    }
+    window.addEventListener("load",initUS);
+})();
                 </script>
             </div>
         </div>
         <header id="site-header"
             class="flex [animation:animationIn_0.45s_ease-out_0.05s_both] fixed top-0 left-0 z-50 w-full pt-6 pr-4 pb-4 pl-4 md:pt-8 md:pr-8 md:pb-4 md:pl-8 items-center justify-between">
             <div class="flex flex-1 items-center gap-2 md:gap-3">
-                <img src="static/img/crasto-logo-icon.png" alt="CRASTO.AI" class="h-6 md:h-8 w-auto">
+                <img src="static/img/crasto-logo-icon.png" alt="CRASTO.AI" class="h-6 md:h-8 w-auto" width="32" height="32" fetchpriority="high">
                 <span
                     class="text-white font-manrope font-light text-lg sm:text-lg md:text-2xl tracking-[0.1em] md:tracking-[0.2em]">CRASTO<span
                         class="text-cyan-500 font-medium">.AI</span></span>
@@ -2833,9 +2739,11 @@ scaleY(var(--tw-scale-y, 1))
                     </div>
 
                     <script>
-                        if (window.UnicornStudio) {
-                            window.UnicornStudio.init();
-                        }
+                        window.addEventListener("load",function(){
+                            if(window.UnicornStudio&&!window.UnicornStudio.isInitialized){
+                                UnicornStudio.init();window.UnicornStudio.isInitialized=true;
+                            }
+                        });
                     </script>
 
                     <!-- Volumetric Glows -->
@@ -2881,7 +2789,7 @@ scaleY(var(--tw-scale-y, 1))
                 <!-- Brand Column -->
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-3 mb-6">
-                        <img src="static/img/crasto-logo-icon.png" alt="Crasto.AI" class="h-8 w-auto">
+                        <img src="static/img/crasto-logo-icon.png" alt="Crasto.AI" class="h-8 w-auto" width="32" height="32" loading="lazy">
                         <div class="text-2xl font-manrope font-extralight tracking-tighter text-white">CRASTO<span class="text-cyan-400">.AI</span></div>
                     </div>
                     <div class="mb-8 max-w-xs" data-i18n="footer.tagline">A company of Crasto.com Technologies Inc. Since 2004.<br/>Leading the autonomous business infrastructure era.</div>
