@@ -1,4 +1,5 @@
 # Dependências e caches
+node_modules/
 __pycache__/
 *.pyc
 *.pyo
