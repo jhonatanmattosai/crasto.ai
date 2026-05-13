@@ -7,6 +7,5 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /usr/share/nginx/html/index.html
 COPY static/ /usr/share/nginx/html/static/
 COPY portfolio/ /usr/share/nginx/html/portfolio/
-COPY Assets/ /usr/share/nginx/html/Assets/
 
 EXPOSE 80
